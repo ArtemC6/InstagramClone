@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_margin="6dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageRemov"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_close" />
+        </RelativeLayout>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageRandom"
+            android:layout_width="134dp"
+            android:layout_height="134dp"
+            android:src="@drawable/ic_profile_user" />
+
+        <TextView
+            android:id="@+id/nameRandom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#5C5B5B"
+            android:textSize="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="20dp"
+            android:text="Рукоминдации для вас" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:foreground="?android:attr/selectableItemBackground"
+            android:id="@+id/btn_RandomFollow"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_followers"
+            android:textColor="@color/white"
+            android:textSize="9dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</RelativeLayout>

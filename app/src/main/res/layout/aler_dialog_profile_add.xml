@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:id="@+id/linearDialog"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textAddPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        android:text="Добавить фото профиля"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textAddStories"
+        android:layout_width="wrap_content"
+        android:padding="14dp"
+        android:layout_height="wrap_content"
+        android:text="Добавить свою историю"
+        android:textColor="@color/black" />
+
+
+
+</LinearLayout>

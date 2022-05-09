@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.FollowingFragment">
+
+    <EditText
+        android:id="@+id/search_bar_click"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="14dp"
+        android:background="@drawable/ed_text_search"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:focusable="false"
+        android:hint="Поик"
+        android:padding="4dp"
+        android:textSize="15dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="4dp"
+        android:id="@+id/recycler_following_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

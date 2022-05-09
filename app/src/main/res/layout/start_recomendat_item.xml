@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/image_profile_random"
+        android:src="@drawable/ic_profile_user"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/image_profile_random"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/startrandomusername"
+            android:maxLines="1"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+            <ImageView
+                android:id="@+id/startRecomendatetRandom"
+                android:layout_width="15dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_done_official"
+                android:layout_height="15dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11dp"
+            android:id="@+id/startrandomfullname"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/inscriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="#8C8B8B"
+            android:text="Популярное"
+            android:maxLines="1"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:background="@drawable/bg_button_followers"
+        android:id="@+id/randombtn_follow"
+        android:textColor="#F8F8F8"
+        android:textSize="10dp"
+        android:padding="5dp"
+        android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/startRandomClose"
+            android:layout_width="15dp"
+            android:src="@drawable/ic_close"
+            android:layout_marginHorizontal="10dp"
+            android:layout_height="15dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="50dp"
+        android:src="@drawable/ic_remove"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:paddingBottom="14dp"
+        android:paddingTop="20dp"
+        android:paddingStart="14dp"
+        android:layout_width="match_parent"
+        android:textSize="13dp"
+        android:text="Пожаловаться..."
+        android:textColor="#BF0746"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="13dp"
+        android:padding="14dp"
+        android:text="Копировать ссулку"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="13dp"
+        android:padding="14dp"
+        android:text="Поделиться в..."
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="13dp"
+        android:padding="14dp"
+        android:text="Скрыть"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
