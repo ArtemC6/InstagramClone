@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //  Нижняя понель
+    //  Нижняя панель
     private void bottomMenu() {
         homeMain.setOnClickListener(new View.OnClickListener() {
             @Override
