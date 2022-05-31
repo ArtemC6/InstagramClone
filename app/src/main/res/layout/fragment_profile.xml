@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.ProfileFragment">
 
-
     <ProgressBar
         android:id="@+id/progressBarProfile"
         android:layout_width="50dp"
@@ -134,6 +133,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:scrollbars="none"
         android:layout_height="match_parent"
         android:layout_below="@id/bar">
 

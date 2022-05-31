@@ -14,10 +14,10 @@
         android:src="@drawable/ic_more" />
 
     <LinearLayout
-        android:paddingBottom="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,16 +99,62 @@
                 android:layout_height="25dp"
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_save" />
-
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/no_of_likes"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:paddingVertical="2dp">
+
+            <LinearLayout
+                android:id="@+id/linearPeopleLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_people_like"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_profile_user" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="Нравиться"
+                    android:textColor="@color/black_94" />
+
+                <TextView
+                    android:id="@+id/name_people_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:paddingEnd="3dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="3dp"
+                    android:text="и"
+                    android:textColor="@color/black_94" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/number_of_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -163,9 +209,9 @@
                 android:id="@+id/textMy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="4dp"
                 android:layout_marginStart="2sp"
                 android:layout_toEndOf="@id/textDate"
+                android:paddingBottom="4dp"
                 android:textSize="9.1dp"
                 android:visibility="gone" />
         </RelativeLayout>

@@ -50,7 +50,6 @@ public class ChatActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private Button visitProfileUserBtn;
     private FirebaseAuth auth;
-
     private String recieveid, profailPic, username, name, userstatus, userId;
 
     @Override

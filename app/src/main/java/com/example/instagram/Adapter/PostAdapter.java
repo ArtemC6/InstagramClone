@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -36,8 +38,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
@@ -48,7 +52,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     int number_of_clicks = 0;
     boolean thread_started = false;
     final int DELAY_BETWEEN_CLICKS_IN_MILLISECONDS = 350;
-
     private FirebaseUser firebaseUser;
 
     public PostAdapter(Context mContext, List<Post> mPosts) {
@@ -120,7 +123,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.textDate.setText(strDate.toString());
 
         isLiked(post.getPostid(), holder.like);
-        noOfLikes(post.getPostid(), holder.noOfLikes);
+        likes(post, holder.number_of_likes, holder.linearPeopleLike, holder.profile_people_like, holder.name_people_like);
         getComments(post.getPostid(), holder.noOfComments);
         isSaved(post.getPostid(), holder.save);
 
@@ -326,7 +329,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
 
-        holder.noOfLikes.setOnClickListener(new View.OnClickListener() {
+        holder.number_of_likes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, FollowersActivity.class);
@@ -368,15 +371,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView image_profile_post,
-                save, comment, like, postImage, morePost, heartAnimation;
+                save, comment, like, postImage, morePost, heartAnimation, profile_people_like;
 
-        public TextView username, textDate, noOfLikes,
-                deletePosText, author, commentLast, textMy, noOfComments, description;
+        public TextView username, textDate, number_of_likes,
+                deletePosText, author, commentLast, textMy, noOfComments, description, name_people_like;
+
+        public LinearLayout linearPeopleLike;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             image_profile_post = itemView.findViewById(R.id.image_profile_post);
+            name_people_like = itemView.findViewById(R.id.name_people_like);
+            linearPeopleLike = itemView.findViewById(R.id.linearPeopleLike);
+            profile_people_like = itemView.findViewById(R.id.profile_people_like);
             textMy = itemView.findViewById(R.id.textMy);
             commentLast = itemView.findViewById(R.id.commentLast);
             postImage = itemView.findViewById(R.id.post_image);
@@ -388,7 +396,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             textDate = itemView.findViewById(R.id.textDate);
             heartAnimation = itemView.findViewById(R.id.heartAnimation);
             username = itemView.findViewById(R.id.username);
-            noOfLikes = itemView.findViewById(R.id.no_of_likes);
+            number_of_likes = itemView.findViewById(R.id.number_of_likes);
             author = itemView.findViewById(R.id.author);
             noOfComments = itemView.findViewById(R.id.no_of_comments);
             description = itemView.findViewById(R.id.description);
@@ -437,11 +445,42 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         });
     }
 
-    private void noOfLikes(String postId, final TextView text) {
-        FirebaseDatabase.getInstance().getReference().child("Likes").child(postId).addValueEventListener(new ValueEventListener() {
+    private void likes(Post post, TextView number_of_likes, LinearLayout linearPeopleLike, ImageView profile_people_like, TextView name_people_like) {
+        LinkedList<String> idList = new LinkedList<>();
+        FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                text.setText("Нравится: " + dataSnapshot.getChildrenCount());
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    idList.add((snapshot.getKey()));
+                }
+
+                if (idList.size() >= 1) {
+                    linearPeopleLike.setVisibility(View.VISIBLE);
+                    number_of_likes.setText("еще " + dataSnapshot.getChildrenCount());
+
+                    FirebaseDatabase.getInstance().getReference().child("Users").child(idList.getLast()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String idUser = dataSnapshot.child("id").getValue().toString();
+                            if (FirebaseAuth.getInstance().getCurrentUser().getUid() != idUser) {
+                                Glide.with(mContext).load(dataSnapshot.child("imageurl").getValue().toString()).into(profile_people_like);
+                                name_people_like.setText(dataSnapshot.child("username").getValue().toString());
+                            } else {
+                                linearPeopleLike.setVisibility(View.GONE);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                } else {
+                    linearPeopleLike.setVisibility(View.GONE);
+                    number_of_likes.setText("Нравится: " + dataSnapshot.getChildrenCount());
+                }
             }
 
             @Override
@@ -450,6 +489,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
     }
+
 
     private void getComments(String postId, final TextView text) {
         FirebaseDatabase.getInstance().getReference().child("Comments").child(postId).addValueEventListener(new ValueEventListener() {

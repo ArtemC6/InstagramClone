@@ -28,7 +28,6 @@ import java.util.List;
 
 
 public class FollowingFragment extends Fragment {
-
     private RecyclerView recycler_following_fragment;
     private String id;
     private List<String> idList;
@@ -58,7 +57,7 @@ public class FollowingFragment extends Fragment {
 
     //    Получить подписки
     private void getFollowings() {
-        FirebaseDatabase.getInstance().getReference().child("Follow").child(id).child("following").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Follow").child(id).child("followers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 idList.clear();

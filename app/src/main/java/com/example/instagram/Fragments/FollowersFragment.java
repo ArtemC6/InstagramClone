@@ -54,7 +54,8 @@ public class FollowersFragment extends Fragment {
 
     //    Получить подписчиков
     private void getFollowers() {
-        FirebaseDatabase.getInstance().getReference().child("Follow").child(id).child("followers").addValueEventListener(new ValueEventListener() {
+
+        FirebaseDatabase.getInstance().getReference().child("Follow").child(id).child("following").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 idList.clear();

@@ -40,7 +40,6 @@ public class SearchFragment extends Fragment {
         init(view);
         return view;
     }
-
     //    Переменые
     public void init(View view) {
         search_bar_click = view.findViewById(R.id.search_bar_click);

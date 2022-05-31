@@ -173,6 +173,7 @@ public class FollowersActivity extends AppCompatActivity {
                 mUsers.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
+
                     for (String id : idList) {
                         if (user.getId().equals(id)) {
                             if (!user.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
