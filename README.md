@@ -1,6 +1,9 @@
 # InstagramClone
-### This is an educational demonstration project.
-
+#### This is an educational demonstration project.
++ Firebase database
+  + Firebase Authentication
+  + Firebase Cloud-Storage 
+  + Firebase Realtime Database 
 ___
 
 ![photo_2022-11-02_13-37-24](https://user-images.githubusercontent.com/105007162/199428169-5beca6ff-5dc3-4018-b41e-cd470c38c676.jpg)
